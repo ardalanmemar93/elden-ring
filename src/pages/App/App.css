@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 } */
+
+
+body {
+  background-image: url('/public/images/eldenring.png');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center center; 
+  background-attachment: fixed; 
+  background-color: #282c35; 
+  height: 100vh;
+  margin: 0; 
+  padding: 20px; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+  overflow: auto;
+}
