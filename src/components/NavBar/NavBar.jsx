@@ -8,13 +8,12 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav>
-      <Link to="/orders">Message History</Link>
-      &nbsp; | &nbsp;
-      <Link to="/orders/new">New Message</Link>
-      &nbsp;&nbsp;
-      <span>Welcome, {user.name}</span>
-      &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
+    <nav className="bg-gray-800 p-4">
+      <Link to="/orders" className="text-white hover:text-gray-300">Message History</Link>
+      <span className="text-white"> | </span>
+      <Link to="/orders/new" className="text-white hover:text-gray-300">New Message</Link>
+      <span className="ml-4 text-white">Welcome, {user.name}</span>
+      <Link to="" onClick={handleLogOut} className="ml-4 text-white hover:underline">Log Out</Link>
     </nav>
   );
 }
