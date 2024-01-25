@@ -20,8 +20,8 @@ return (
     <main>
       {user ? (
         <Routes>
-          <Route path="/orders/new" element={<NewMessagePage />} />
-          <Route path="/orders" element={<MessageHistoryPage />} />
+          <Route path="/messages/new" element={<NewMessagePage />} />
+          <Route path="/messages" element={<MessageHistoryPage />} />
         </Routes>
       ) : (
         <AuthPage setUser={setUser} />
