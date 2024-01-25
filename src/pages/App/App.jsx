@@ -11,19 +11,20 @@ export default function App() {
   const [user, setUser] = useState(getUser());
 
   return (
-    <main className="App">
-      { user ?
+    <div className="bg-gray-100 min-h-screen">
+      <main className="max-w-6xl mx-auto p-4">
+        {user ? (
           <>
             <NavBar user={user} setUser={setUser} />
             <Routes>
-              {/* Route components in here */}
               <Route path="/orders/new" element={<NewMessagePage />} />
               <Route path="/orders" element={<MessageHistoryPage />} />
             </Routes>
           </>
-          :
+        ) : (
           <AuthPage setUser={setUser} />
-      }
-    </main>
+        )}
+      </main>
+    </div>
   );
 }
