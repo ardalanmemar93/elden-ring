@@ -8,9 +8,14 @@ export default function MessageHistoryPage() {
   }
   
   return (
-    <div className='text-white'>
-      <h1>MessageHistoryPage</h1>
-      <button onClick={handleCheckToken}>Check When My Login Expires</button>
+    <div className='text-white p-8'>
+      <h1 className="text-4xl font-bold mb-6">Message History Page</h1>
+      <button 
+        className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded focus:outline-none focus:shadow-outline"
+        onClick={handleCheckToken}
+      >
+        Check When My Login Expires
+      </button>
     </div>
   );
 }
