@@ -6,6 +6,8 @@ const Person = require('./person.model');
 const Thing = require('./thing.model');
 const BattleTactic = require('./battle-tactic.model');
 const Action = require('./action.model');
+const Situation = require('./situation.model');
+const Place = require('./place.model');
 
 
 
@@ -221,6 +223,85 @@ const actionsData = [
   "Gesturing"
 ];
 
+const situationsData = [
+  "Morning",
+  "Noon",
+  "Evening",
+  "Night",
+  "Clear Sky",
+  "Overcast",
+  "Rain",
+  "Storm",
+  "Mist",
+  "Snow",
+  "Patrolling",
+  "Procession",
+  "Crowd",
+  "Surprise Attack",
+  "Ambush",
+  "Pincer Attack",
+  "Beating To A Pulp",
+  "Battle",
+  "Reinforcements",
+  "Ritual",
+  "Explosion",
+  "High Spot",
+  "Defensible Spot",
+  "Climbable Spot",
+  "Crossable Spot",
+  "Bright Spot",
+  "Dark Spot",
+  "Open Area",
+  "Cramped Area",
+  "Hiding Place",
+  "Sniping Spot",
+  "Recon Spot",
+  "Safety",
+  "Danger",
+  "Gorgeous View",
+  "Detour",
+  "Hidden Path",
+  "Secret Passage",
+  "Shortcut",
+  "Dead End",
+  "Looking Away",
+  "Unnoticed",
+  "Out Of Stamina"
+];
+
+const placesData = [
+  "High Road",
+  "Checkpoint",
+  "Bridge",
+  "Castle",
+  "Fort",
+  "City",
+  "Ruins",
+  "Church",
+  "Tower",
+  "Camp Site",
+  "House",
+  "Cemetery",
+  "Underground Tomb",
+  "Tunnel",
+  "Cave",
+  "Evergaol",
+  "Great Tree",
+  "Cellar",
+  "Surface",
+  "Underground",
+  "Forest",
+  "River",
+  "Lake",
+  "Bog",
+  "Mountain",
+  "Valley",
+  "Cliff",
+  "Waterside",
+  "Nest",
+  "Hole"
+];
+
 
 async function seedData() {
   try {
@@ -246,6 +327,12 @@ async function seedData() {
 
     await Action.insertMany(actionsData);
     console.log('Actions seeded successfully');
+
+    await Situation.insertMany(situationsData);
+    console.log('Situations seeded successfully');
+
+    await Place.insertMany(placesData);
+    console.log('Places seeded successfully');
   } catch (error) {
     console.error('Error seeding data:', error.message);
   } finally {
