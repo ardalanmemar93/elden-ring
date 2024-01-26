@@ -461,6 +461,23 @@ const actionsData = [
 ];
 
 
+const wordsData = [
+  ...templatesData.map(template => ({ name: template.name, type: 'template' })),
+  ...enemiesData.map(enemy => ({ name: enemy.name, type: 'enemy' })),
+  ...peopleData.map(person => ({ name: person.name, type: 'person' })),
+  ...thingsData.map(thing => ({ name: thing.name, type: 'thing' })),
+  ...battleTacticsData.map(tactic => ({ name: tactic.name, type: 'battle tactic' })),
+  ...actionsData.map(action => ({ name: action.name, type: 'action' })),
+  ...situationsData.map(situation => ({ name: situation.name, type: 'situation' })),
+  ...placesData.map(place => ({ name: place.name, type: 'place' })),
+  ...directionsData.map(direction => ({ name: direction.name, type: 'direction' })),
+  ...bodyPartsData.map(bodyPart => ({ name: bodyPart.name, type: 'body part' })),
+  ...conceptsData.map(concept => ({ name: concept.name, type: 'concept' })),
+  ...phrasesData.map(phrase => ({ name: phrase.name, type: 'phrase' })),
+  ...conjunctionsData.map(conjunction => ({ name: conjunction.name, type: 'conjunction' })),
+];
+
+
 
 
 async function seedData() {
@@ -518,3 +535,4 @@ async function seedData() {
 
 seedData();
 
+module.exports = { wordsData };
