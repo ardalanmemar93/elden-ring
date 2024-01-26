@@ -1,18 +1,41 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
-const messageSchema = new Schema ({
-    "_id": "ObjectId",  // MongoDB generated unique identifier
-    "userId": "ObjectId",  // User ID if you have user authentication
-    "template": "String",  // Chosen template (e.g., "No **** ahead")
-    "word": "String",  // Chosen word (e.g., "Enemy")
-    "phrases": {
-      "beforeTemplate": "String",  // Chosen phrase before template (e.g., "Be wary of")
-      "afterTemplate": "String"  // Chosen phrase after template (e.g., "Victory ahead")
+const messageSchema = new Schema({
+  "_id": {
+    type: mongoose.Schema.Types.ObjectId,
+    default: mongoose.Types.ObjectId
+  },
+  "userId": {
+    type: mongoose.Schema.Types.ObjectId,
+    // Add any necessary options or default values
+  },
+  "template": {
+    type: String,
+    required: true,
+  },
+  "word": {
+    type: String,
+    required: true,
+  },
+  "phrases": {
+    "beforeTemplate": {
+      type: String,
+      required: true,
     },
-    "createdAt": "Date",  // Timestamp for when the message was created
-    "updatedAt": "Date"   // Timestamp for when the message was last updated
-  })
-  
-  module.exports = mongoose.model('Message', messageSchema);
+    "afterTemplate": {
+      type: String,
+      required: true,
+    }
+  },
+  "createdAt": {
+    type: Date,
+    default: Date.now,
+  },
+  "updatedAt": {
+    type: Date,
+    default: Date.now,
+  }
+});
+
+module.exports = mongoose.model('Message', messageSchema);
