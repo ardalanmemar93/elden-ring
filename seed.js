@@ -10,6 +10,7 @@ const Situation = require('./situation.model');
 const Place = require('./place.model');
 const Direction = require('./direction.model');
 const BodyPart = require('./body-part.model');
+const Concept = require('./concept.model');
 
 
 
@@ -331,6 +332,69 @@ const bodyPartsData = [
   "Fingers"
 ];
 
+const conceptsData = [
+  "Life",
+  "Death",
+  "Light",
+  "Dark",
+  "Stars",
+  "Fire",
+  "Order",
+  "Chaos",
+  "Joy",
+  "Wrath",
+  "Suffering",
+  "Sadness",
+  "Comfort",
+  "Bliss",
+  "Misfortune",
+  "Good Fortune",
+  "Bad Luck",
+  "Hope",
+  "Despair",
+  "Victory",
+  "Defeat",
+  "Research",
+  "Faith",
+  "Abundance",
+  "Rot",
+  "Loyalty",
+  "Injustice",
+  "Secret",
+  "Opportunity",
+  "Pickle",
+  "Clue",
+  "Friendship",
+  "Love",
+  "Bravery",
+  "Vigor",
+  "Fortitude",
+  "Confidence",
+  "Distracted",
+  "Unguarded",
+  "Introspection",
+  "Regret",
+  "Resignation",
+  "Futility",
+  "On The Brink",
+  "Betrayal",
+  "Revenge",
+  "Destruction",
+  "Recklessness",
+  "Calmness",
+  "Vigilance",
+  "Tranquility",
+  "Sound",
+  "Tears",
+  "Sleep",
+  "Depths",
+  "Dregs",
+  "Fear",
+  "Sacrifice",
+  "Ruin"
+];
+
+
 
 async function seedData() {
   try {
@@ -368,6 +432,10 @@ async function seedData() {
 
     await BodyPart.insertMany(bodyPartsData);
     console.log('Body Parts seeded successfully');
+
+    await Concept.insertMany(conceptsData);
+    console.log('Concepts seeded successfully');
+
 
   } catch (error) {
     console.error('Error seeding data:', error.message);
