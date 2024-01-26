@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const Template = require('./template.model');
 const Enemy = require('./enemy.model');
 const Person = require('./person.model');
+const Thing = require('./thing.model');
+
 
 const templatesData = [
   "**** ahead",
@@ -123,6 +125,54 @@ const peopleData = [
   "God"
 ];
 
+const thingsData = [
+  "Item",
+  "Necessary Item",
+  "Precious Item",
+  "Something",
+  "Something Incredible",
+  "Treasure Chest",
+  "Corpse",
+  "Coffin",
+  "Trap",
+  "Armament",
+  "Shield",
+  "Bow",
+  "Projectile Weapon",
+  "Armor",
+  "Talisman",
+  "Skill",
+  "Sorcery",
+  "Incantation",
+  "Map",
+  "Material",
+  "Flower",
+  "Grass",
+  "Tree",
+  "Fruit",
+  "Seed",
+  "Mushroom",
+  "Tear",
+  "Crystal",
+  "Butterfly",
+  "Bug",
+  "Dung",
+  "Grace",
+  "Door",
+  "Key",
+  "Ladder",
+  "Lever",
+  "Lift",
+  "Spiritspring",
+  "Sending Gate",
+  "Stone Astrolabe",
+  "Birdseye Telescope",
+  "Message",
+  "Bloodstain",
+  "Erdtree",
+  "Elden Ring"
+];
+
 
 async function seedData() {
   try {
@@ -139,6 +189,9 @@ async function seedData() {
 
     await Person.insertMany(peopleData);
     console.log('People seeded successfully');
+
+    await Thing.insertMany(thingsData);
+    console.log('Things seeded successfully');
   } catch (error) {
     console.error('Error seeding data:', error.message);
   } finally {
