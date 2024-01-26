@@ -11,6 +11,7 @@ const Place = require('./place.model');
 const Direction = require('./direction.model');
 const BodyPart = require('./body-part.model');
 const Concept = require('./concept.model');
+const Phrase = require('./phrase.model');
 
 
 
@@ -394,6 +395,39 @@ const conceptsData = [
   "Ruin"
 ];
 
+const phrasesData = [
+  "Good Luck",
+  "Look Carefully",
+  "Listen Carefully",
+  "Think Carefully",
+  "Well Done",
+  "I Did It!",
+  "I’ve Failed…",
+  "Here!",
+  "Not Here!",
+  "Don’t You Dare!",
+  "Do It!",
+  "I Can’t Take This…",
+  "Don’t Think",
+  "So Lonely…",
+  "Here Again…",
+  "Just Getting Started",
+  "Stay Calm",
+  "Keep Moving",
+  "Turn Back",
+  "Give Up",
+  "Don’t Give Up",
+  "Help Me…",
+  "I Don’t Believe It…",
+  "Too High Up",
+  "I Want To Go Home…",
+  "It’s Like A Dream…",
+  "Seems Familiar…",
+  "Beautiful…",
+  "You Don’t Have The Right",
+  "Are You Ready?"
+];
+
 
 
 async function seedData() {
@@ -436,7 +470,8 @@ async function seedData() {
     await Concept.insertMany(conceptsData);
     console.log('Concepts seeded successfully');
 
-
+    await Phrase.insertMany(phrasesData);
+    console.log('Phrases seeded successfully');
   } catch (error) {
     console.error('Error seeding data:', error.message);
   } finally {
