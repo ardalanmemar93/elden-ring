@@ -9,6 +9,7 @@ const Action = require('./action.model');
 const Situation = require('./situation.model');
 const Place = require('./place.model');
 const Direction = require('./direction.model');
+const BodyPart = require('./body-part.model');
 
 
 
@@ -318,6 +319,18 @@ const directionsData = [
   "Edge"
 ];
 
+const bodyPartsData = [
+  "Head",
+  "Stomach",
+  "Back",
+  "Arms",
+  "Legs",
+  "Rump",
+  "Tail",
+  "Core",
+  "Fingers"
+];
+
 
 async function seedData() {
   try {
@@ -352,6 +365,10 @@ async function seedData() {
 
     await Direction.insertMany(directionsData);
     console.log('Directions seeded successfully');
+
+    await BodyPart.insertMany(bodyPartsData);
+    console.log('Body Parts seeded successfully');
+
   } catch (error) {
     console.error('Error seeding data:', error.message);
   } finally {
