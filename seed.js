@@ -8,6 +8,7 @@ const BattleTactic = require('./battle-tactic.model');
 const Action = require('./action.model');
 const Situation = require('./situation.model');
 const Place = require('./place.model');
+const Direction = require('./direction.model');
 
 
 
@@ -302,6 +303,21 @@ const placesData = [
   "Hole"
 ];
 
+const directionsData = [
+  "East",
+  "West",
+  "South",
+  "North",
+  "Ahead",
+  "Behind",
+  "Left",
+  "Right",
+  "Center",
+  "Up",
+  "Down",
+  "Edge"
+];
+
 
 async function seedData() {
   try {
@@ -333,6 +349,9 @@ async function seedData() {
 
     await Place.insertMany(placesData);
     console.log('Places seeded successfully');
+
+    await Direction.insertMany(directionsData);
+    console.log('Directions seeded successfully');
   } catch (error) {
     console.error('Error seeding data:', error.message);
   } finally {
