@@ -4,6 +4,8 @@ const Template = require('./template.model');
 const Enemy = require('./enemy.model');
 const Person = require('./person.model');
 const Thing = require('./thing.model');
+const BattleTactic = require('./battle-tactic.model');
+
 
 
 const templatesData = [
@@ -173,6 +175,26 @@ const thingsData = [
   "Elden Ring"
 ];
 
+const battleTacticsData = [
+  "Close-Quarters Battle",
+  "Ranged Battle",
+  "Horseback Battle",
+  "Luring Out",
+  "Defeating One-By-One",
+  "Taking On All At Once",
+  "Rushing In",
+  "Stealth",
+  "Mimicry",
+  "Confusion",
+  "Pursuit",
+  "Fleeing",
+  "Summoning",
+  "Circling Around",
+  "Jumping Off",
+  "Dashing Through",
+  "Brief Respite"
+];
+
 
 async function seedData() {
   try {
@@ -192,6 +214,9 @@ async function seedData() {
 
     await Thing.insertMany(thingsData);
     console.log('Things seeded successfully');
+
+    await BattleTactic.insertMany(battleTacticsData);
+    console.log('Battle Tactics seeded successfully');
   } catch (error) {
     console.error('Error seeding data:', error.message);
   } finally {
