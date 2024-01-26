@@ -5,6 +5,7 @@ const Enemy = require('./enemy.model');
 const Person = require('./person.model');
 const Thing = require('./thing.model');
 const BattleTactic = require('./battle-tactic.model');
+const Action = require('./action.model');
 
 
 
@@ -195,6 +196,31 @@ const battleTacticsData = [
   "Brief Respite"
 ];
 
+const actionsData = [
+  "Attacking",
+  "Jump Attack",
+  "Running Attack",
+  "Critical Hit",
+  "Two-Handing",
+  "Blocking",
+  "Parrying",
+  "Guard Counter",
+  "Sorcery",
+  "Incantation",
+  "Skill",
+  "Summoning",
+  "Throwing",
+  "Healing",
+  "Running",
+  "Rolling",
+  "Backstepping",
+  "Jumping",
+  "Crouching",
+  "Target Lock",
+  "Item Crafting",
+  "Gesturing"
+];
+
 
 async function seedData() {
   try {
@@ -217,6 +243,9 @@ async function seedData() {
 
     await BattleTactic.insertMany(battleTacticsData);
     console.log('Battle Tactics seeded successfully');
+
+    await Action.insertMany(actionsData);
+    console.log('Actions seeded successfully');
   } catch (error) {
     console.error('Error seeding data:', error.message);
   } finally {
