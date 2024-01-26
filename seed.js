@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const Template = require('./template.model');
 const Enemy = require('./enemy.model');
+const Person = require('./person.model');
 
 const templatesData = [
   "**** ahead",
@@ -75,9 +76,57 @@ const enemiesData = [
   "Ill-Omened Creature"
 ];
 
+const peopleData = [
+  "Tarnished",
+  "Warrior",
+  "Swordfighter",
+  "Knight",
+  "Samurai",
+  "Sorcerer",
+  "Cleric",
+  "Sage",
+  "Merchant",
+  "Teacher",
+  "Master",
+  "Friend",
+  "Lover",
+  "Old Dear",
+  "Old Codger",
+  "Angel",
+  "Fat Coinpurse",
+  "Pauper",
+  "Good Sort",
+  "Wicked Sort",
+  "Plump Sort",
+  "Skinny Sort",
+  "Lovable Sort",
+  "Pathetic Sort",
+  "Strange Sort",
+  "Nimble Sort",
+  "Laggardly Sort",
+  "Invisible Sort",
+  "Unfathomable Sort",
+  "Giant Sort",
+  "Sinner",
+  "Thief",
+  "Liar",
+  "Dastard",
+  "Traitor",
+  "Pair",
+  "Trio",
+  "Noble",
+  "Aristocrat",
+  "Hero",
+  "Champion",
+  "Monarch",
+  "Lord",
+  "God"
+];
+
+
 async function seedData() {
   try {
-    await mongoose.connect('mongodb://localhost:27017/your-database-name', {
+    await mongoose.connect('mongodb://localhost:27017/elden-ring', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -87,6 +136,9 @@ async function seedData() {
 
     await Enemy.insertMany(enemiesData);
     console.log('Enemies seeded successfully');
+
+    await Person.insertMany(peopleData);
+    console.log('People seeded successfully');
   } catch (error) {
     console.error('Error seeding data:', error.message);
   } finally {
