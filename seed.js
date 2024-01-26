@@ -12,6 +12,7 @@ const Direction = require('./direction.model');
 const BodyPart = require('./body-part.model');
 const Concept = require('./concept.model');
 const Phrase = require('./phrase.model');
+const Conjunction = require('./conjunction.model');
 
 
 
@@ -428,6 +429,19 @@ const phrasesData = [
   "Are You Ready?"
 ];
 
+const conjunctionsData = [
+  "And Then",
+  "Or",
+  "But",
+  "Therefore",
+  "In Short",
+  "Except",
+  "By The Way",
+  "So To Speak",
+  "All The More",
+  ","
+];
+
 
 
 async function seedData() {
@@ -472,6 +486,10 @@ async function seedData() {
 
     await Phrase.insertMany(phrasesData);
     console.log('Phrases seeded successfully');
+
+    await Conjunction.insertMany(conjunctionsData);
+    console.log('Conjunctions seeded successfully');
+
   } catch (error) {
     console.error('Error seeding data:', error.message);
   } finally {
