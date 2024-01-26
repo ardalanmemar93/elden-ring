@@ -5,6 +5,8 @@ export default function NavBar({ user, setUser }) {
   function handleLogOut() {
     userService.logOut();
     setUser(null);
+  
+    window.location.reload();
   }
 
   return (
@@ -13,10 +15,15 @@ export default function NavBar({ user, setUser }) {
       <span className="text-white">|</span>
       <Link to="/messages/new" className="text-white hover:text-gray-300 mx-4">New Message</Link>
       <span className="text-white">|</span>
-      <span className="ml-4 text-white">Welcome, {user.name}</span>
-      <Link to="" onClick={handleLogOut} className="ml-4 text-white hover:underline">Log Out</Link>
+      {user ? (
+        <span className="ml-4 text-white">Welcome, {user.name}</span>
+      ) : (
+        <Link to="/auth" className="ml-4 text-white hover:underline">Log In / Sign Up</Link>
+      )}
+      {user && (
+        <Link to="" onClick={handleLogOut} className="ml-4 text-white hover:underline">Log Out</Link>
+      )}
     </nav>
   );
-  
-  
 }
+

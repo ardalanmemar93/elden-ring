@@ -28,17 +28,46 @@ export default function LoginForm({ setUser }) {
   }
 
   return (
-    <div>
-      <div className="form-container">
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
-          <label>Password</label>
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-          <button type="submit">LOG IN</button>
+    <div className=" h-screen ">
+      <div className="w-full max-w-md">
+        <form className="shadow-md rounded px-8 pt-6 pb-8 mb-4 form-container" autoComplete="off" onSubmit={handleSubmit}>
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+            id="email"
+            type="text"
+            name="email"
+            value={credentials.email}
+            onChange={handleChange}
+            required
+          />
+  
+          <label className="block text-white text-sm font-bold mb-2" htmlFor="password">
+            Password
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+            id="password"
+            type="password"
+            name="password"
+            value={credentials.password}
+            onChange={handleChange}
+            required
+          />
+  
+          <button
+            className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            LOG IN
+          </button>
         </form>
+  
+        <p className="text-red-500 text-xs italic error-message">&nbsp;{error}</p>
       </div>
-      <p className="error-message">&nbsp;{error}</p>
     </div>
   );
+  
 }
