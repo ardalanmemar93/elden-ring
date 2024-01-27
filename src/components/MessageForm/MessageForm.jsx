@@ -71,29 +71,23 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
         </select>
       </div>
 
-{/* Words Input */}
-<div>
-  <label htmlFor="words">Words:</label>
-  <select
-    id="words"
-    name="words"
-    multiple
-    value={formData.words}
-    onChange={handleChange}
-  >
-    {Object.keys(wordsData).map((category) => (
-      <optgroup key={category} label={category}>
-        {wordsData[category].map((wordOption, wordIndex) => (
-          <option key={`${wordOption.name}-${wordIndex}`} value={wordOption.name}>
-            {wordOption.name}
+    {/* Words Input */}
+    <div>
+      <label htmlFor="words">Words:</label>
+      <select
+        id="words"
+        name="words"
+        multiple
+        value={formData.words}
+        onChange={handleChange}
+      >
+        {Object.keys(wordsData).map((category) => (
+          <option key={category} value={category}>
+            {category}
           </option>
         ))}
-      </optgroup>
-    ))}
-  </select>
-</div>
-
-
+      </select>
+    </div>
 
       {/* Conjunctions Input */}
       <div>
@@ -131,23 +125,23 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
         </select>
       </div>
 
-      {/* Words Input */}
-      <div>
-        <label htmlFor="words">Words:</label>
-        <select
-          id="words"
-          name="words"
-          multiple
-          value={formData.words}
-          onChange={handleAdditionalWordsChange} 
-        >
-          {Object.keys(wordsData).map((category, index) => (
-            <option key={`${category}-${index}`} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
-      </div>
+    {/* Additional Words Input */}
+    <div>
+      <label htmlFor="additionalWords">Additional Words:</label>
+      <select
+        id="additionalWords"
+        name="additionalWords"
+        multiple
+        value={formData.additionalWords}
+        onChange={handleAdditionalWordsChange}
+      >
+        {Object.keys(wordsData).map((category, index) => (
+          <option key={`${category}-${index}`} value={category}>
+            {category}
+          </option>
+        ))}
+      </select>
+    </div>
 
       {/* Submit Button */}
       <button type="submit">Create Message</button>
