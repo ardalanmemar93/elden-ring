@@ -64,19 +64,19 @@ const MessageForm = ({ templatesData, wordsData }) => {
       <div>
         <label htmlFor="words">Words:</label>
         <select
-          id="words"
-          name="words"
-          multiple
-          value={formData.words}
-          onChange={handleWordsChange}
-        >
-          {/* Dynamically generate options based on your words data */}
-          {wordsData.map((wordOption) => (
-            <option key={wordOption.name} value={wordOption.name}>
-              {wordOption.name}
-            </option>
-          ))}
-        </select>
+            id="words"
+            name="words"
+            multiple
+            value={formData.words}
+            onChange={handleWordsChange}
+            >
+            {/* Dynamically generate options based on your words data */}
+            {wordsData.map((wordOption, index) => (
+                <option key={`${wordOption.name}-${index}`} value={wordOption.name}>
+                {wordOption.name}
+                </option>
+            ))}
+            </select>
       </div>
 
       {/* Submit Button */}

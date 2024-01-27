@@ -461,27 +461,30 @@ const actionsData = [
 ];
 
 
-const wordsData = [
-  ...enemiesData.map(enemy => ({ name: enemy.name, type: 'enemy' })),
-  ...peopleData.map(person => ({ name: person.name, type: 'person' })),
-  ...thingsData.map(thing => ({ name: thing.name, type: 'thing' })),
-  ...battleTacticsData.map(tactic => ({ name: tactic.name, type: 'battle tactic' })),
-  ...actionsData.map(action => ({ name: action.name, type: 'action' })),
-  ...situationsData.map(situation => ({ name: situation.name, type: 'situation' })),
-  ...placesData.map(place => ({ name: place.name, type: 'place' })),
-  ...directionsData.map(direction => ({ name: direction.name, type: 'direction' })),
-  ...bodyPartsData.map(bodyPart => ({ name: bodyPart.name, type: 'body part' })),
-  ...conceptsData.map(concept => ({ name: concept.name, type: 'concept' })),
-  ...phrasesData.map(phrase => ({ name: phrase.name, type: 'phrase' })),
-  ...conjunctionsData.map(conjunction => ({ name: conjunction.name, type: 'conjunction' })),
-];
+const wordsData = {
+  enemies: enemiesData.map(enemy => ({ name: enemy.name, type: 'enemy' })),
+  people: peopleData.map(person => ({ name: person.name, type: 'person' })),
+  things: thingsData.map(thing => ({ name: thing.name, type: 'thing' })),
+  battleTactics: battleTacticsData.map(tactic => ({ name: tactic.name, type: 'battle tactic' })),
+  actions: actionsData.map(action => ({ name: action.name, type: 'action' })),
+  situations: situationsData.map(situation => ({ name: situation.name, type: 'situation' })),
+  places: placesData.map(place => ({ name: place.name, type: 'place' })),
+  directions: directionsData.map(direction => ({ name: direction.name, type: 'direction' })),
+  bodyParts: bodyPartsData.map(bodyPart => ({ name: bodyPart.name, type: 'body part' })),
+  concepts: conceptsData.map(concept => ({ name: concept.name, type: 'concept' })),
+  phrases: phrasesData.map(phrase => ({ name: phrase.name, type: 'phrase' })),
+  conjunctions: conjunctionsData.map(conjunction => ({ name: conjunction.name, type: 'conjunction' })),
+};
+
+const wordsDataArray = Object.values(wordsData).flat();
 
 
 
 
 async function seedData() {
+  let connection;
   try {
-    await mongoose.connect('mongodb://localhost/elden-ring', {
+      connection = await mongoose.connect('mongodb://localhost/elden-ring', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -526,12 +529,16 @@ async function seedData() {
     console.log('Conjunctions seeded successfully');
 
   } catch (error) {
-    console.error('Error seeding data:', error.message);
+    console.error('Error seeding data:', error.message || error);
   } finally {
-    mongoose.connection.close();
+    // Close the connection whether there was an error or not
+    if (connection) {
+      await connection.connection.close();
+      console.log('MongoDB connection closed');
+    }
   }
 }
 
 seedData();
 
-module.exports = { templatesData, wordsData };
+module.exports = { templatesData, wordsData: wordsDataArray};
