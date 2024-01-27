@@ -23,24 +23,17 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
   };
 
   const handleAdditionalWordsChange = (e) => {
-    const { options } = e.target;
-    const selectedWords = [];
+    const { name, value } = e.target;
   
-    for (let i = 0; i < options.length; i++) {
-      const optionValue = options[i].value;
-  
-      // Check if the selected option is a category or an actual word
-      if (wordsData[optionValue]) {
-        // If it's a category, add all words from that category
-        selectedWords.push(...wordsData[optionValue].map((word) => word.name));
-      } else {
-        // If it's an actual word, add the word to the selectedWords array
-        selectedWords.push(optionValue);
-      }
+    // If the selected option is a category, update the formData[name] accordingly
+    if (wordsData[value]) {
+      setFormData((prevData) => ({ ...prevData, [name]: [value] }));
+    } else {
+      // If it's an actual word, update the formData[name] array
+      setFormData((prevData) => ({ ...prevData, [name]: [value] }));
     }
-  
-    setFormData((prevData) => ({ ...prevData, additionalWords: selectedWords }));
   };
+  
   
   const handleSubmit = (e) => {
     e.preventDefault();
