@@ -2,37 +2,33 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const messageSchema = new Schema({
-  "_id": {
-    type: mongoose.Schema.Types.ObjectId,
-    default: mongoose.Types.ObjectId
-  },
-  "userId": {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     // Add any necessary options or default values
   },
-  "template": {
+  template: {
     type: String,
     required: true,
   },
-  "word": {
+  word: {
     type: String,
     required: true,
   },
-  "phrases": {
-    "beforeTemplate": {
+  phrases: {
+    beforeTemplate: {
       type: String,
       required: true,
     },
-    "afterTemplate": {
+    afterTemplate: {
       type: String,
       required: true,
     }
   },
-  "createdAt": {
+  createdAt: {
     type: Date,
     default: Date.now,
   },
-  "updatedAt": {
+  updatedAt: {
     type: Date,
     default: Date.now,
   }

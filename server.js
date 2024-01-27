@@ -24,6 +24,10 @@ const port = process.env.PORT || 3001;
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
 
+// Use the messages router for handling message-related routes
+app.use('/api/messages', require('./routes/api/messages'));
+
+
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests
 app.get('/*', function(req, res) {
