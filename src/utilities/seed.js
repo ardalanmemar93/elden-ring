@@ -1,18 +1,18 @@
 // seed.js
 const mongoose = require('mongoose');
-const Template = require('./models/template');
-const Enemy = require('./models/enemy');
-const Person = require('./models/person');
-const Thing = require('./models/thing');
-const BattleTactic = require('./models/battle-tactic');
-const Action = require('./models/action');
-const Situation = require('./models/situation');
-const Place = require('./models/place');
-const Direction = require('./models/direction');
-const BodyPart = require('./models/body-part');
-const Concept = require('./models/concept');
-const Phrase = require('./models/phrase');
-const Conjunction = require('./models/conjunction');
+const Template = require('../models/template');
+const Enemy = require('../models/enemy');
+const Person = require('../models/person');
+const Thing = require('../models/thing');
+const BattleTactic = require('../models/battle-tactic');
+const Action = require('../models/action');
+const Situation = require('../models/situation');
+const Place = require('../models/place');
+const Direction = require('../models/direction');
+const BodyPart = require('../models/body-part');
+const Concept = require('../models/concept');
+const Phrase = require('../models/phrase');
+const Conjunction = require('../models/conjunction');
 
 
 
