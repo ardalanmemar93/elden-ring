@@ -90,7 +90,7 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
 
       {/* Additional Templates Input */}
       <div>
-        <label htmlFor="additionalTemplate">Additional Template:</label>
+        <label htmlFor="additionalTemplate">Template(2):</label>
         <select
           id="additionalTemplate"
           name="additionalTemplate"
@@ -108,7 +108,7 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
 
       {/* Additional Words Input */}
       <div>
-        <label htmlFor="additionalWords">Additional Words:</label>
+        <label htmlFor="additionalWords">Words(2):</label>
         <select
           id="additionalWords"
           name="additionalWords"
