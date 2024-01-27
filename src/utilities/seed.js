@@ -462,7 +462,6 @@ const actionsData = [
 
 
 const wordsData = [
-  ...templatesData.map(template => ({ name: template.name, type: 'template' })),
   ...enemiesData.map(enemy => ({ name: enemy.name, type: 'enemy' })),
   ...peopleData.map(person => ({ name: person.name, type: 'person' })),
   ...thingsData.map(thing => ({ name: thing.name, type: 'thing' })),
@@ -535,4 +534,4 @@ async function seedData() {
 
 seedData();
 
-module.exports = { wordsData };
+module.exports = { templatesData, wordsData };

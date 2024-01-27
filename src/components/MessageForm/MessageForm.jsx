@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { wordsData } from '../../utilities/seed'; 
 
-const MessageForm = ({ templatesData }) => {
+const MessageForm = ({ templatesData, wordsData }) => {
   const [formData, setFormData] = useState({
     template: '',
     words: [],
