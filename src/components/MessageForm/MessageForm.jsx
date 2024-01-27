@@ -6,25 +6,44 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
     template: '',
     words: [],
     conjunctions: '',
-    additionalTemplate: '',  // New state for additional template
-    additionalWords: [],    // New state for additional words
+    additionalTemplate: '',  
+    additionalWords: [],    
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  
+    // If the selected option is a category, update the formData[name] accordingly
+    if (wordsData[value]) {
+      setFormData((prevData) => ({ ...prevData, [name]: [value] }));
+    } else {
+      // If the selected option is an actual word, update the formData[name] array
+      setFormData((prevData) => ({ ...prevData, [name]: [...prevData[name], value] }));
+    }
   };
+  
 
   const handleAdditionalWordsChange = (e) => {
     const { options } = e.target;
     const selectedWords = [];
+  
     for (let i = 0; i < options.length; i++) {
-      if (options[i].selected) {
-        selectedWords.push(options[i].value);
+      const optionValue = options[i].value;
+  
+      // Check if the selected option is a category or an actual word
+      if (wordsData[optionValue]) {
+        // If it's a category, add all words from that category
+        selectedWords.push(...wordsData[optionValue].map((word) => word.name));
+      } else {
+        // If it's an actual word, add the word to the selectedWords array
+        selectedWords.push(optionValue);
       }
     }
+  
     setFormData((prevData) => ({ ...prevData, additionalWords: selectedWords }));
   };
+  
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,23 +71,29 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
         </select>
       </div>
 
-      {/* Words Input */}
-      <div>
-        <label htmlFor="words">Words:</label>
-        <select
-          id="words"
-          name="words"
-          multiple
-          value={formData.words}
-          onChange={handleChange}
-        >
-          {wordsData.map((wordOption, index) => (
-            <option key={`${wordOption.name}-${index}`} value={wordOption.name}>
-              {wordOption.name}
-            </option>
-          ))}
-        </select>
-      </div>
+{/* Words Input */}
+<div>
+  <label htmlFor="words">Words:</label>
+  <select
+    id="words"
+    name="words"
+    multiple
+    value={formData.words}
+    onChange={handleChange}
+  >
+    {Object.keys(wordsData).map((category) => (
+      <optgroup key={category} label={category}>
+        {wordsData[category].map((wordOption, wordIndex) => (
+          <option key={`${wordOption.name}-${wordIndex}`} value={wordOption.name}>
+            {wordOption.name}
+          </option>
+        ))}
+      </optgroup>
+    ))}
+  </select>
+</div>
+
+
 
       {/* Conjunctions Input */}
       <div>
@@ -106,19 +131,19 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
         </select>
       </div>
 
-      {/* Additional Words Input */}
+      {/* Words Input */}
       <div>
-        <label htmlFor="additionalWords">Words(2):</label>
+        <label htmlFor="words">Words:</label>
         <select
-          id="additionalWords"
-          name="additionalWords"
+          id="words"
+          name="words"
           multiple
-          value={formData.additionalWords}
-          onChange={handleAdditionalWordsChange}
+          value={formData.words}
+          onChange={handleAdditionalWordsChange} 
         >
-          {wordsData.map((wordOption, index) => (
-            <option key={`${wordOption.name}-${index}`} value={wordOption.name}>
-              {wordOption.name}
+          {Object.keys(wordsData).map((category, index) => (
+            <option key={`${category}-${index}`} value={category}>
+              {category}
             </option>
           ))}
         </select>
