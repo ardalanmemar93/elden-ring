@@ -462,19 +462,20 @@ const actionsData = [
 
 
 const wordsData = {
-  enemies: enemiesData.map(enemy => ({ name: enemy.name, type: 'enemy' })),
-  people: peopleData.map(person => ({ name: person.name, type: 'person' })),
-  things: thingsData.map(thing => ({ name: thing.name, type: 'thing' })),
-  battleTactics: battleTacticsData.map(tactic => ({ name: tactic.name, type: 'battle tactic' })),
-  actions: actionsData.map(action => ({ name: action.name, type: 'action' })),
-  situations: situationsData.map(situation => ({ name: situation.name, type: 'situation' })),
-  places: placesData.map(place => ({ name: place.name, type: 'place' })),
-  directions: directionsData.map(direction => ({ name: direction.name, type: 'direction' })),
-  bodyParts: bodyPartsData.map(bodyPart => ({ name: bodyPart.name, type: 'body part' })),
-  concepts: conceptsData.map(concept => ({ name: concept.name, type: 'concept' })),
-  phrases: phrasesData.map(phrase => ({ name: phrase.name, type: 'phrase' })),
-  conjunctions: conjunctionsData.map(conjunction => ({ name: conjunction.name, type: 'conjunction' })),
+  enemies: enemiesData,
+  people: peopleData,
+  things: thingsData,
+  battleTactics: battleTacticsData,
+  actions: actionsData,
+  situations: situationsData,
+  places: placesData,
+  directions: directionsData,
+  bodyParts: bodyPartsData,
+  concepts: conceptsData,
+  phrases: phrasesData,
+  conjunctions: conjunctionsData,
 };
+
 
 const wordsDataArray = Object.values(wordsData).flat();
 
@@ -541,4 +542,4 @@ async function seedData() {
 
 seedData();
 
-module.exports = { templatesData, wordsData: wordsDataArray};
+module.exports = { templatesData, wordsData: wordsDataArray, conjunctionsData};

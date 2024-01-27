@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
-const MessageForm = ({ templatesData, wordsData }) => {
+const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
+  // State and functions for the form
   const [formData, setFormData] = useState({
     template: '',
     words: [],
+    conjunctions: '',
   });
 
   const handleChange = (e) => {
@@ -11,33 +13,10 @@ const MessageForm = ({ templatesData, wordsData }) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleWordsChange = (e) => {
-    const { options } = e.target;
-    const selectedWords = Array.from(options)
-      .filter((option) => option.selected)
-      .map((option) => option.value);
-
-    setFormData((prevData) => ({ ...prevData, words: selectedWords }));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Create the message using form data
-    const message = `${formData.template} ${formData.words.join(' ')}`;
-
-    // Now you can do something with the created message, like sending it to a server, etc.
-    console.log('Created Message:', message);
-
-    // Clear the form after submission
-    clearForm();
-  };
-
-  const clearForm = () => {
-    setFormData({
-      template: '',
-      words: [],
-    });
+    // Do something with the form data, e.g., send it to a server
+    console.log('Form Data:', formData);
   };
 
   return (
@@ -64,20 +43,37 @@ const MessageForm = ({ templatesData, wordsData }) => {
       <div>
         <label htmlFor="words">Words:</label>
         <select
-            id="words"
-            name="words"
-            multiple
-            value={formData.words}
-            onChange={handleWordsChange}
-            >
-            {/* Dynamically generate options based on your words data */}
-            {wordsData.map((wordOption, index) => (
-                <option key={`${wordOption.name}-${index}`} value={wordOption.name}>
-                {wordOption.name}
-                </option>
-            ))}
-            </select>
+          id="words"
+          name="words"
+          multiple
+          value={formData.words}
+          onChange={handleChange}
+        >
+          {wordsData.map((wordOption, index) => (
+            <option key={`${wordOption.name}-${index}`} value={wordOption.name}>
+              {wordOption.name}
+            </option>
+          ))}
+        </select>
       </div>
+
+      {/* Conjunctions Input */}
+      <div>
+        <label htmlFor="conjunctions">Conjunctions:</label>
+        <select
+        id="conjunctions"
+        name="conjunctions"
+        value={formData.conjunctions}
+        onChange={handleChange}
+        >
+        <option value="">Select Conjunction</option>
+        {conjunctionsData.map((conjunctionOption) => (
+            <option key={conjunctionOption.name} value={conjunctionOption.name}>
+            {conjunctionOption.name}
+            </option>
+        ))}
+        </select>
+    </div>
 
       {/* Submit Button */}
       <button type="submit">Create Message</button>
