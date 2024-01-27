@@ -4,15 +4,14 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
   // State and functions for the form
   const [formData, setFormData] = useState({
     template: '',
-    words: [],
+    words: '',
     conjunctions: '',
     additionalTemplate: '',  
-    additionalWords: [],    
+    additionalWords: '',    
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-  
     // If the selected option is a category, set it as the formData[name] value
     const updatedValue = wordsData[value] ? value : [...formData[name], value];
   

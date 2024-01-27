@@ -456,42 +456,43 @@ async function seedData() {
 
     await Template.insertMany(templatesData);
     console.log('Templates seeded successfully');
-
-    await Enemy.insertMany(enemiesData);
+    
+    await Enemy.insertMany(wordsData.enemies);
     console.log('Enemies seeded successfully');
-
-    await Person.insertMany(peopleData);
+    
+    await Person.insertMany(wordsData.people);
     console.log('People seeded successfully');
-
-    await Thing.insertMany(thingsData);
+    
+    await Thing.insertMany(wordsData.things);
     console.log('Things seeded successfully');
-
-    await BattleTactic.insertMany(battleTacticsData);
+    
+    await BattleTactic.insertMany(wordsData.battleTactics);
     console.log('Battle Tactics seeded successfully');
-
-    await Action.insertMany(actionsData);
+    
+    await Action.insertMany(wordsData.actions);
     console.log('Actions seeded successfully');
-
-    await Situation.insertMany(situationsData);
+    
+    await Situation.insertMany(wordsData.situations);
     console.log('Situations seeded successfully');
-
-    await Place.insertMany(placesData);
+    
+    await Place.insertMany(wordsData.places);
     console.log('Places seeded successfully');
-
-    await Direction.insertMany(directionsData);
+    
+    await Direction.insertMany(wordsData.directions);
     console.log('Directions seeded successfully');
-
-    await BodyPart.insertMany(bodyPartsData);
+    
+    await BodyPart.insertMany(wordsData.bodyParts);
     console.log('Body Parts seeded successfully');
-
-    await Concept.insertMany(conceptsData);
+    
+    await Concept.insertMany(wordsData.concepts);
     console.log('Concepts seeded successfully');
-
-    await Phrase.insertMany(phrasesData);
+    
+    await Phrase.insertMany(wordsData.phrases);
     console.log('Phrases seeded successfully');
-
-    await Conjunction.insertMany(conjunctionsData);
+    
+    await Conjunction.insertMany(wordsData.conjunctions);
     console.log('Conjunctions seeded successfully');
+    
 
   } catch (error) {
     console.error('Error seeding data:', error.message || error);

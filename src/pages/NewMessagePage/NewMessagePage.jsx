@@ -6,10 +6,6 @@ import { templatesData, wordsData, conjunctionsData } from '../../utilities/seed
 export default function NewMessagePage() {
   const [user, setUser] = useState(getUser());
 
-  console.log('templatesData:', templatesData);
-  console.log('wordsData:', wordsData);
-  console.log('conjunctionsData:', conjunctionsData);
-
   return (
     <>
       <div className="text-white p-8">
