@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
+
+const MessageForm = ({ templatesData, wordsData, conjunctionsData, onSubmit }) => {
   // State and functions for the form
   const [formData, setFormData] = useState({
     template: '',
@@ -13,16 +14,15 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     // If the selected option is a category, set it as the formData[name] value
-    const updatedValue = wordsData[value] ? value : value;
-  
+    const updatedValue = wordsData[value] ? value : [...formData[name], value];
+
     setFormData((prevData) => ({ ...prevData, [name]: updatedValue }));
   };
-  
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Do something with the form data, e.g., send it to a server
-    console.log('Form Data:', formData);
+    // Call the onSubmit prop with the form data
+    onSubmit(formData);
   };
 
   return (
@@ -124,6 +124,15 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData }) => {
           ))}
         </select>
       </div>
+    
+        {/* Message */}
+        <div>
+          <h2>Message:</h2>
+          <p className="text-white">
+            {` ${formData.template} ${formData.words} ${formData.conjunctions} 
+              ${formData.additionalTemplate} ${formData.additionalWords}`}
+          </p>
+        </div>
 
       {/* Submit Button */}
       <button type="submit">Create Message</button>
