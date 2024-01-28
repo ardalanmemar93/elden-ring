@@ -124,15 +124,15 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData, onSubmit }) =
           ))}
         </select>
       </div>
-    
-        {/* Message */}
-        <div>
-          <h2>Message:</h2>
-          <p className="text-white">
-            {` ${formData.template} ${formData.words} ${formData.conjunctions} 
-              ${formData.additionalTemplate} ${formData.additionalWords}`}
-          </p>
-        </div>
+
+      {/* Message */}
+      <div>
+        <h2>Message:</h2>
+        <p className="text-white">
+          {` ${String(formData.template).replace(/\*\*\*\*/g, formData.words)} ${formData.conjunctions} 
+            ${String(formData.additionalTemplate).replace(/\*\*\*\*/g, formData.additionalWords)}`}
+        </p>
+      </div>
 
       {/* Submit Button */}
       <button type="submit">Create Message</button>
