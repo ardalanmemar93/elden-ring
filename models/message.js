@@ -12,7 +12,7 @@ const messageSchema = new Schema({
   },
   word: {
     type: String,
-    required: true,
+    // Set 'required' to false if you want it to be optional
   },
   phrases: {
     beforeTemplate: {

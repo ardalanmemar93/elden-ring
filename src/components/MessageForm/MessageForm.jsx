@@ -13,14 +13,17 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData, onSubmit }) =
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+  
     // If the selected option is a category, set it as the formData[name] value
-    const updatedValue = wordsData[value] ? value : [...formData[name], value];
-
+    const updatedValue = wordsData[value] ? value : value;
+  
     setFormData((prevData) => ({ ...prevData, [name]: updatedValue }));
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('Form Data:', formData); 
     // Call the onSubmit prop with the form data
     onSubmit(formData);
   };
