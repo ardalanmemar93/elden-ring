@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const messageSchema = new Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    // Add any necessary options or default values
   },
   template: {
     type: String,
@@ -12,7 +11,6 @@ const messageSchema = new Schema({
   },
   word: {
     type: String,
-    // Set 'required' to false if you want it to be optional
   },
   phrases: {
     beforeTemplate: {

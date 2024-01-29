@@ -21,11 +21,12 @@ app.use(require('./config/checkToken'));
 
 const port = process.env.PORT || 3001;
 
+// Use the messages router for handling message-related routes
+app.use('/api/messages', require('./routes/api/messages'));
+
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
 
-// Use the messages router for handling message-related routes
-app.use('/api/messages', require('./routes/api/messages'));
 
 
 // The following "catch all" route (note the *) is necessary

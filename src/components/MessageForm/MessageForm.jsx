@@ -23,7 +23,6 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData, onSubmit }) =
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData); 
     // Call the onSubmit prop with the form data
     onSubmit(formData);
   };

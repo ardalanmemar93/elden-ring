@@ -6,12 +6,11 @@ import { templatesData, wordsData, conjunctionsData } from '../../utilities/seed
 
 export default function NewMessagePage() {
   const [user, setUser] = useState(getUser());
-  const navigate = useNavigate(); // useNavigate returns a function for navigation
+  const navigate = useNavigate(); 
 
   // Define a function to create a new message
   const createMessage = async (messageData) => {
     try {
-      console.log('Form Data:', messageData);
       const response = await fetch('/api/messages', {
         method: 'POST',
         headers: {
@@ -22,19 +21,16 @@ export default function NewMessagePage() {
       });
   
       if (response.ok) {
-        // Corrected line
         navigate('/messages');
       } else {
-        const responseBody = await response.json();
-        console.error('Failed to create message:', response.status, responseBody.error);
+        // Log the entire response for debugging purposes
+        console.error('Failed to create message:', response.status, response.statusText);
       }
     } catch (error) {
       console.error('Error creating message:', error);
     }
   };
   
-  
-
   // Callback function to handle form submission
   const handleSubmit = async (formData) => {
     // Call createMessage function with form data

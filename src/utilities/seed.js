@@ -495,7 +495,7 @@ async function seedData() {
     
 
   } catch (error) {
-    console.error('Error seeding data:', error.message || error);
+    // console.error('Error seeding data:', error.message || error);
   } finally {
     // Close the connection whether there was an error or not
     if (connection) {
