@@ -9,4 +9,7 @@ const messageController = require('../../controllers/api/messages');
 // Route to create a new message
 router.post('/', messageController.createMessage);
 
+// Route to get all messages
+router.get('/', messageController.getAllMessages);
+
 module.exports = router;

@@ -2,9 +2,11 @@
 import React from 'react';
 
 const Message = ({ message }) => {
+  const { template, words, conjunctions, additionalTemplate, additionalWords } = message;
+
   return (
     <li>
-      {message.template} - {message.phrases.beforeTemplate} - {message.phrases.afterTemplate}
+      {`${template.replace(/\*\*\*\*/g, words)} ${conjunctions} ${additionalTemplate.replace(/\*\*\*\*/g, additionalWords)}`}
     </li>
   );
 };

@@ -1,3 +1,4 @@
+// messageController.js
 const Message = require('../../models/message');
 
 const createMessage = async (req, res) => {
@@ -6,7 +7,7 @@ const createMessage = async (req, res) => {
     console.log(`[${new Date()}] Received request to /api/messages:`, req.body);
 
     // Ensure all required fields are present
-    const { template, additionalTemplate, additionalWords } = req.body;
+    const { template, words, conjunctions, additionalTemplate, additionalWords } = req.body;
 
     if (!template || !additionalTemplate || !additionalWords) {
       return res.status(400).json({ error: 'Invalid request data. Please provide all required fields.' });
@@ -15,27 +16,18 @@ const createMessage = async (req, res) => {
     // Create a new message
     const newMessage = new Message({
       template,
-      word: req.body.word || '',
-      phrases: {
-        beforeTemplate: additionalTemplate,
-        afterTemplate: additionalWords,
-      },
+      words,
+      conjunctions,
+      additionalTemplate,
+      additionalWords,
     });
-
-    // Log before saving to the database
-    console.log('About to save the message to the database:', newMessage);
 
     // Save the message to the database
     const savedMessage = await newMessage.save();
 
-    // Log after saving to the database
-    console.log('Message saved to the database:', savedMessage);
-
     // Respond with the saved message
     res.status(201).json(savedMessage);
   } catch (error) {
-    console.error('Error creating message:', error);
-
     if (error.name === 'ValidationError') {
       return res.status(400).json({ error: 'Validation Error', details: error.errors });
     }
@@ -44,6 +36,18 @@ const createMessage = async (req, res) => {
   }
 };
 
+const getAllMessages = async (req, res) => {
+  try {
+    const messages = await Message.find();
+
+    res.status(200).json(messages);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
 module.exports = {
   createMessage,
+  getAllMessages,
 };

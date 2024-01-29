@@ -1,8 +1,18 @@
+// NewMessagePage.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MessageForm from '../../components/MessageForm/MessageForm'; 
 import { getUser } from '../../utilities/users-service';
 import { templatesData, wordsData, conjunctionsData } from '../../utilities/seed';
+
+// Export the formattedMessage function
+export const formattedMessage = (messageData) => {
+  return {
+    template: String(messageData.template).replace(/\*\*\*\*/g, messageData.words),
+    conjunctions: messageData.conjunctions,
+    additionalTemplate: String(messageData.additionalTemplate).replace(/\*\*\*\*/g, messageData.additionalWords),
+  };
+};
 
 export default function NewMessagePage() {
   const [user, setUser] = useState(getUser());
@@ -23,7 +33,6 @@ export default function NewMessagePage() {
       if (response.ok) {
         navigate('/messages');
       } else {
-        // Log the entire response for debugging purposes
         console.error('Failed to create message:', response.status, response.statusText);
       }
     } catch (error) {
@@ -46,7 +55,7 @@ export default function NewMessagePage() {
           templatesData={templatesData} 
           wordsData={wordsData} 
           conjunctionsData={conjunctionsData} 
-          onSubmit={handleSubmit} // Pass the handleSubmit function as a prop
+          onSubmit={handleSubmit} 
         />
       </div>
     </>

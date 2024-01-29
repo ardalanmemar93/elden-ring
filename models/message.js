@@ -1,26 +1,23 @@
+// message.js model
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const messageSchema = new Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-  },
   template: {
     type: String,
     required: true,
   },
-  word: {
+  words: {
     type: String,
   },
-  phrases: {
-    beforeTemplate: {
-      type: String,
-      required: true,
-    },
-    afterTemplate: {
-      type: String,
-      required: true,
-    }
+  conjunctions: {
+    type: String,
+  },
+  additionalTemplate: {
+    type: String,
+  },
+  additionalWords: {
+    type: String,
   },
   createdAt: {
     type: Date,
