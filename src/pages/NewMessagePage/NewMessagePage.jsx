@@ -47,10 +47,10 @@ export default function NewMessagePage() {
   };
 
   return (
-    <>
-      <div className="text-white p-8">
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-white p-8 rounded-md shadow-md w-full">
         <h1 className="text-4xl font-bold mb-6">New Message Page</h1>
-        {/* Pass the handleSubmit function to MessageForm */}
+    
         <MessageForm 
           templatesData={templatesData} 
           wordsData={wordsData} 
@@ -58,6 +58,6 @@ export default function NewMessagePage() {
           onSubmit={handleSubmit} 
         />
       </div>
-    </>
+    </div>
   );
 }
