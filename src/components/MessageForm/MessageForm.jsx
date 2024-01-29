@@ -28,15 +28,18 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData, onSubmit }) =
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8 p-6 bg-green-950 rounded-md shadow-md">
       {/* Template Input */}
-      <div>
-        <label htmlFor="template">Template:</label>
+      <div className="mb-4">
+        <label htmlFor="template" className="block text-white text-sm font-bold mb-2">
+          Template:
+        </label>
         <select
           id="template"
           name="template"
           value={formData.template}
           onChange={handleChange}
+          className="w-full p-2 border border-gray-300 rounded-md"
         >
           <option value="">Select Template</option>
           {templatesData.map((templateOption) => (
@@ -48,13 +51,16 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData, onSubmit }) =
       </div>
 
       {/* Words Input */}
-      <div>
-        <label htmlFor="words">Words:</label>
+      <div className="mb-4">
+        <label htmlFor="words" className="block text-white text-sm font-bold mb-2">
+          Words:
+        </label>
         <select
           id="words"
           name="words"
           value={formData.words}
           onChange={handleChange}
+          className="w-full p-2 border border-gray-300 rounded-md"
         >
           <option value="">Select Words</option>
           {Object.keys(wordsData).map((category) => (
@@ -70,13 +76,16 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData, onSubmit }) =
       </div>
 
       {/* Conjunctions Input */}
-      <div>
-        <label htmlFor="conjunctions">Conjunctions:</label>
+      <div className="mb-4">
+        <label htmlFor="conjunctions" className="block text-white text-sm font-bold mb-2">
+          Conjunctions:
+        </label>
         <select
           id="conjunctions"
           name="conjunctions"
           value={formData.conjunctions}
           onChange={handleChange}
+          className="w-full p-2 border border-gray-300 rounded-md"
         >
           <option value="">Select Conjunction</option>
           {conjunctionsData.map((conjunctionOption) => (
@@ -88,13 +97,16 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData, onSubmit }) =
       </div>
 
       {/* Additional Templates Input */}
-      <div>
-        <label htmlFor="additionalTemplate">Template(2):</label>
+      <div className="mb-4">
+        <label htmlFor="additionalTemplate" className="block text-white text-sm font-bold mb-2">
+          Template:
+        </label>
         <select
           id="additionalTemplate"
           name="additionalTemplate"
           value={formData.additionalTemplate}
           onChange={handleChange}
+          className="w-full p-2 border border-gray-300 rounded-md"
         >
           <option value="">Select Additional Template</option>
           {templatesData.map((templateOption) => (
@@ -106,13 +118,16 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData, onSubmit }) =
       </div>
 
       {/* Additional Words Input */}
-      <div>
-        <label htmlFor="additionalWords">Additional Words:</label>
+      <div className="mb-4">
+        <label htmlFor="additionalWords" className="block text-white text-sm font-bold mb-2">
+           Words:
+        </label>
         <select
           id="additionalWords"
           name="additionalWords"
           value={formData.additionalWords}
           onChange={handleChange}
+          className="w-full p-2 border border-gray-300 rounded-md"
         >
           <option value="">Select Additional Words</option>
           {Object.keys(wordsData).map((category) => (
@@ -128,8 +143,8 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData, onSubmit }) =
       </div>
 
       {/* Message */}
-      <div>
-        <h2>Message:</h2>
+      <div className="mb-4">
+        <h2 className="text-xl text-white font-bold mb-2">Message:</h2>
         <p className="text-white">
           {` ${String(formData.template).replace(/\*\*\*\*/g, formData.words)} ${formData.conjunctions} 
             ${String(formData.additionalTemplate).replace(/\*\*\*\*/g, formData.additionalWords)}`}
@@ -137,7 +152,12 @@ const MessageForm = ({ templatesData, wordsData, conjunctionsData, onSubmit }) =
       </div>
 
       {/* Submit Button */}
-      <button type="submit">Create Message</button>
+      <button
+        type="submit"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Create Message
+      </button>
     </form>
   );
 };
