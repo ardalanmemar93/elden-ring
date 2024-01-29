@@ -1,3 +1,6 @@
-# MERN-Stack Infrastructure
+# Elden Ring 
 
-Clone this repo to provide the starter code for a comprehensive MERN-Stack project including token-based authentication.# mern-quick-notes
+
+#
+
+"Elden ring is a recreation of the messaging system from the game elden ring "
