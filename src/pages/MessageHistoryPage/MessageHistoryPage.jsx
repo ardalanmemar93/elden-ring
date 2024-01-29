@@ -1,21 +1,40 @@
-import { checkToken } from '../../utilities/users-service';
+import React, { useState, useEffect } from 'react';
+import Message from '../../components/Message/Message'; 
 
 export default function MessageHistoryPage() {
-  
-  async function handleCheckToken() {
-    const expDate = await checkToken();
-    console.log(expDate);
-  }
-  
+  const [messages, setMessages] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const response = await fetch('/api/messages');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch messages: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        setMessages(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchMessages();
+  }, []);
+
   return (
     <div className='text-white p-8'>
       <h1 className="text-4xl font-bold mb-6">Message History Page</h1>
-      <button 
-        className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded focus:outline-none focus:shadow-outline"
-        onClick={handleCheckToken}
-      >
-        Check When My Login Expires
-      </button>
+      {error ? (
+        <p>Error fetching messages: {error}</p>
+      ) : (
+        <ul>
+          {messages.map((message) => (
+            <Message key={message._id} message={message} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
