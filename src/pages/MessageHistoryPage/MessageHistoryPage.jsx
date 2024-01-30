@@ -27,7 +27,7 @@ export default function MessageHistoryPage() {
 
   return (
     <div className="text-white p-8">
-      <h1 className="text-4xl font-bold mb-6">Message History Page</h1>
+      <h1 className="text-4xl font-bold mb-6">Messages</h1>
       {error ? (
         <p>Error fetching messages: {error}</p>
       ) : (
